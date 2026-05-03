@@ -1,0 +1,17 @@
+[
+  { "id": "f-01", "name": "Rajan Singh", "village": "Rampur", "location": {"lat": 28.8120, "lng": 79.0230}, "crop": "Wheat", "weight_kg": 350, "destination_mandi": "Azadpur Mandi" },
+  { "id": "f-02", "name": "Suresh Yadav", "village": "Bhojpur", "location": {"lat": 28.8080, "lng": 79.0270}, "crop": "Rice", "weight_kg": 200, "destination_mandi": "Azadpur Mandi" },
+  { "id": "f-03", "name": "Kamla Devi", "village": "Khanpur", "location": {"lat": 28.8150, "lng": 79.0210}, "crop": "Mustard", "weight_kg": 150, "destination_mandi": "Azadpur Mandi" },
+  { "id": "f-04", "name": "Mohan Lal", "village": "Kishangarh", "location": {"lat": 28.7820, "lng": 79.0580}, "crop": "Sugarcane", "weight_kg": 500, "destination_mandi": "Ghazipur Mandi" },
+  { "id": "f-05", "name": "Priya Sharma", "village": "Mohammadpur", "location": {"lat": 28.7780, "lng": 79.0630}, "crop": "Tomato", "weight_kg": 180, "destination_mandi": "Ghazipur Mandi" },
+  { "id": "f-06", "name": "Harish Kumar", "village": "Sherpur", "location": {"lat": 28.7830, "lng": 79.0550}, "crop": "Potato", "weight_kg": 400, "destination_mandi": "Ghazipur Mandi" },
+  { "id": "f-07", "name": "Geeta Bai", "village": "Badlapur", "location": {"lat": 28.8380, "lng": 79.1020}, "crop": "Onion", "weight_kg": 250, "destination_mandi": "Okhla Mandi" },
+  { "id": "f-08", "name": "Vijay Patel", "village": "Noorpur", "location": {"lat": 28.8420, "lng": 79.0980}, "crop": "Wheat", "weight_kg": 300, "destination_mandi": "Okhla Mandi" },
+  { "id": "f-09", "name": "Anu Verma", "village": "Sonarpur", "location": {"lat": 28.7520, "lng": 78.9820}, "crop": "Rice", "weight_kg": 220, "destination_mandi": "Keshopur Mandi" },
+  { "id": "f-10", "name": "Deepak Chauhan", "village": "Fatehpur", "location": {"lat": 28.7480, "lng": 78.9840}, "crop": "Mustard", "weight_kg": 280, "destination_mandi": "Keshopur Mandi" },
+  { "id": "f-11", "name": "Sita Ram", "village": "Madhopur", "location": {"lat": 28.8680, "lng": 79.0420}, "crop": "Wheat", "weight_kg": 450, "destination_mandi": "Azadpur Mandi" },
+  { "id": "f-12", "name": "Lakshmi Devi", "village": "Chandpur", "location": {"lat": 28.8720, "lng": 79.0380}, "crop": "Tomato", "weight_kg": 160, "destination_mandi": "Azadpur Mandi" },
+  { "id": "f-13", "name": "Bhola Nath", "village": "Begampur", "location": {"lat": 28.7180, "lng": 79.0120}, "crop": "Sugarcane", "weight_kg": 600, "destination_mandi": "Ghazipur Mandi" },
+  { "id": "f-14", "name": "Rekha Kumari", "village": "Dharmapur", "location": {"lat": 28.7240, "lng": 79.0080}, "crop": "Potato", "weight_kg": 320, "destination_mandi": "Ghazipur Mandi" },
+  { "id": "f-15", "name": "Arun Tiwari", "village": "Lakshmanpur", "location": {"lat": 28.8880, "lng": 79.0820}, "crop": "Rice", "weight_kg": 270, "destination_mandi": "Okhla Mandi" }
+]

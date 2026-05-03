@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+@theme {
+  /* ─── GatiSetu Industrial Color System ─── */
+  --color-surface: #0F172A;
+  --color-surface-elevated: #1E293B;
+  --color-surface-card: #1a2235;
+  --color-surface-glass: rgba(255, 255, 255, 0.02);
+
+  --color-invention-orange: #F97316;
+  --color-orange-glow: rgba(249, 115, 22, 0.2);
+  --color-orange-soft: #FB923C;
+
+  --color-mint-green: #2CFFA7;
+  --color-mint-glow: rgba(44, 255, 167, 0.15);
+  --color-mint-soft: #5CFFBE;
+
+  --color-text-primary: #F1F5F9;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #475569;
+
+  --color-border: rgba(148, 163, 184, 0.1);
+  --color-border-hover: rgba(148, 163, 184, 0.2);
+
+  --color-danger: #EF4444;
+  --color-warning: #F59E0B;
+
+  --font-family-heading: 'Outfit', sans-serif;
+  --font-family-body: 'Inter', sans-serif;
+}
+
+/* ─── Base ─── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-family-body);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  letter-spacing: -0.02em;
+}
+
+/* ─── Industrial Glass Cards — Sharp Edges ─── */
+.glass-card {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 0;
+  transition: all 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(148, 163, 184, 0.18);
+}
+
+.glass-card-mint {
+  border-left: 2px solid var(--color-mint-green);
+}
+
+.glass-card-orange {
+  border-left: 2px solid var(--color-invention-orange);
+}
+
+/* ─── CTA Buttons — Sharp, Industrial ─── */
+.btn-cta {
+  background: var(--color-invention-orange);
+  color: white;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 13px;
+}
+
+.btn-cta:hover {
+  background: var(--color-orange-soft);
+  transform: translateY(-1px);
+}
+
+.btn-cta:active { transform: scale(0.97); }
+
+.btn-mint {
+  background: var(--color-mint-green);
+  color: var(--color-surface);
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 13px;
+}
+
+.btn-mint:hover { transform: translateY(-1px); }
+
+/* ─── Status Indicators ─── */
+.status-dot {
+  width: 8px; height: 8px;
+  background: var(--color-mint-green);
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ─── Animated Background ─── */
+.bg-mesh {
+  background:
+    linear-gradient(135deg, rgba(249, 115, 22, 0.04) 0%, transparent 40%),
+    linear-gradient(225deg, rgba(44, 255, 167, 0.03) 0%, transparent 40%),
+    var(--color-surface);
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.15); }
+::-webkit-scrollbar-thumb:hover { background: rgba(148, 163, 184, 0.3); }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Inputs — Industrial ─── */
+input, select, textarea { font-family: var(--font-family-body); }
+
+.input-dark {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 0;
+  color: var(--color-text-primary);
+  padding: 12px 16px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.input-dark:focus {
+  border-color: var(--color-invention-orange);
+  box-shadow: 0 0 0 1px var(--color-invention-orange);
+}
+
+.input-dark::placeholder { color: var(--color-text-muted); }
+
+/* ─── Range Slider ─── */
+input[type="range"] {
+  -webkit-appearance: none; height: 4px;
+  background: rgba(148, 163, 184, 0.1); outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 16px; height: 16px;
+  background: var(--color-invention-orange); cursor: pointer;
+}
+
+/* ─── Typewriter ─── */
+.typewriter-cursor {
+  border-right: 2px solid var(--color-mint-green);
+  animation: tw-blink 1s infinite;
+  padding-right: 2px;
+}
+@keyframes tw-blink {
+  0%, 100% { border-color: var(--color-mint-green); }
+  50% { border-color: transparent; }
+}
+
+/* ─── Mic Pulse ─── */
+@keyframes mic-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4); }
+  70% { box-shadow: 0 0 0 16px rgba(249, 115, 22, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
+}
+.mic-active { animation: mic-pulse 1.5s infinite; }
+
+/* ─── Text Gradients ─── */
+.text-gradient-orange {
+  background: linear-gradient(135deg, #F97316, #FB923C);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-mint {
+  background: linear-gradient(135deg, #2CFFA7, #5CFFBE);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glow (subtle, used sparingly) ─── */
+.glow-orange { box-shadow: 0 0 16px var(--color-orange-glow); }
+.glow-mint { box-shadow: 0 0 16px var(--color-mint-glow); }

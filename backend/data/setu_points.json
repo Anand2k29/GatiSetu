@@ -1,0 +1,98 @@
+[
+  {
+    "id": "sp-01",
+    "name": "Rampur Panchayat Bhawan",
+    "location": { "lat": 28.8100, "lng": 79.0250 },
+    "village_cluster": ["Rampur", "Bhojpur", "Khanpur"],
+    "landmark_type": "Panchayat Bhawan",
+    "capacity_kg": 5000
+  },
+  {
+    "id": "sp-02",
+    "name": "Kishangarh Temple Chowk",
+    "location": { "lat": 28.7800, "lng": 79.0600 },
+    "village_cluster": ["Kishangarh", "Mohammadpur", "Sherpur"],
+    "landmark_type": "Temple",
+    "capacity_kg": 4000
+  },
+  {
+    "id": "sp-03",
+    "name": "Badlapur Primary School",
+    "location": { "lat": 28.8400, "lng": 79.1000 },
+    "village_cluster": ["Badlapur", "Noorpur", "Sultanpur"],
+    "landmark_type": "School",
+    "capacity_kg": 3500
+  },
+  {
+    "id": "sp-04",
+    "name": "Sonarpur Cooperative Society",
+    "location": { "lat": 28.7500, "lng": 78.9800 },
+    "village_cluster": ["Sonarpur", "Fatehpur", "Daulatpur"],
+    "landmark_type": "Cooperative",
+    "capacity_kg": 6000
+  },
+  {
+    "id": "sp-05",
+    "name": "Madhopur Bus Stand",
+    "location": { "lat": 28.8700, "lng": 79.0400 },
+    "village_cluster": ["Madhopur", "Chandpur", "Gopalnagar"],
+    "landmark_type": "Bus Stand",
+    "capacity_kg": 4500
+  },
+  {
+    "id": "sp-06",
+    "name": "Begampur Grain Market",
+    "location": { "lat": 28.7200, "lng": 79.0100 },
+    "village_cluster": ["Begampur", "Dharmapur", "Raipur"],
+    "landmark_type": "Market",
+    "capacity_kg": 7000
+  },
+  {
+    "id": "sp-07",
+    "name": "Lakshmanpur Community Hall",
+    "location": { "lat": 28.8900, "lng": 79.0800 },
+    "village_cluster": ["Lakshmanpur", "Jaitpur", "Gajraula"],
+    "landmark_type": "Community Hall",
+    "capacity_kg": 4000
+  },
+  {
+    "id": "sp-08",
+    "name": "Haridwar Gate Junction",
+    "location": { "lat": 29.9457, "lng": 78.1642 },
+    "village_cluster": ["Haridwar Gate", "Jwalapur", "Bahadrabad"],
+    "landmark_type": "Junction",
+    "capacity_kg": 8000
+  },
+  {
+    "id": "sp-09",
+    "name": "Modinagar Sabzi Mandi",
+    "location": { "lat": 28.8331, "lng": 77.5800 },
+    "village_cluster": ["Modinagar", "Muradnagar", "Pilkhuwa"],
+    "landmark_type": "Mandi",
+    "capacity_kg": 6000
+  },
+  {
+    "id": "sp-10",
+    "name": "Panipat Krishi Kendra",
+    "location": { "lat": 29.3909, "lng": 76.9635 },
+    "village_cluster": ["Panipat", "Samalkha", "Israna"],
+    "landmark_type": "Krishi Kendra",
+    "capacity_kg": 5500
+  },
+  {
+    "id": "sp-11",
+    "name": "Karnal Dairy Chowk",
+    "location": { "lat": 29.6857, "lng": 76.9905 },
+    "village_cluster": ["Karnal", "Gharaunda", "Nilokheri"],
+    "landmark_type": "Chowk",
+    "capacity_kg": 5000
+  },
+  {
+    "id": "sp-12",
+    "name": "Muzaffarnagar FPO Center",
+    "location": { "lat": 29.4727, "lng": 77.7085 },
+    "village_cluster": ["Muzaffarnagar", "Charthawal", "Khatauli"],
+    "landmark_type": "FPO Center",
+    "capacity_kg": 6500
+  }
+]

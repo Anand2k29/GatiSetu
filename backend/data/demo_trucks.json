@@ -1,0 +1,68 @@
+[
+  {
+    "id": "t-01",
+    "driver_name": "Rakesh Sarathi",
+    "vehicle_number": "UP-14-AT-3421",
+    "return_route_from": "Azadpur Mandi",
+    "return_route_to": "Rampur",
+    "location": {"lat": 28.7168, "lng": 77.1528},
+    "available_capacity_kg": 2000,
+    "eta_hours": 3.5,
+    "status": "returning"
+  },
+  {
+    "id": "t-02",
+    "driver_name": "Sunil Yadav",
+    "vehicle_number": "HR-26-BG-7890",
+    "return_route_from": "Ghazipur Mandi",
+    "return_route_to": "Kishangarh",
+    "location": {"lat": 28.6250, "lng": 77.3210},
+    "available_capacity_kg": 1500,
+    "eta_hours": 2.0,
+    "status": "returning"
+  },
+  {
+    "id": "t-03",
+    "driver_name": "Mahesh Gupta",
+    "vehicle_number": "DL-01-CK-5566",
+    "return_route_from": "Okhla Mandi",
+    "return_route_to": "Badlapur",
+    "location": {"lat": 28.5500, "lng": 77.2800},
+    "available_capacity_kg": 3000,
+    "eta_hours": 4.0,
+    "status": "returning"
+  },
+  {
+    "id": "t-04",
+    "driver_name": "Pappu Khan",
+    "vehicle_number": "UP-09-FT-1234",
+    "return_route_from": "Keshopur Mandi",
+    "return_route_to": "Sonarpur",
+    "location": {"lat": 28.6800, "lng": 77.0900},
+    "available_capacity_kg": 1800,
+    "eta_hours": 3.0,
+    "status": "returning"
+  },
+  {
+    "id": "t-05",
+    "driver_name": "Arvind Kumar",
+    "vehicle_number": "UP-14-DS-9988",
+    "return_route_from": "Azadpur Mandi",
+    "return_route_to": "Madhopur",
+    "location": {"lat": 28.7200, "lng": 77.1600},
+    "available_capacity_kg": 2500,
+    "eta_hours": 4.5,
+    "status": "returning"
+  },
+  {
+    "id": "t-06",
+    "driver_name": "Baldev Singh",
+    "vehicle_number": "HR-12-AX-4455",
+    "return_route_from": "Ghazipur Mandi",
+    "return_route_to": "Begampur",
+    "location": {"lat": 28.6300, "lng": 77.3100},
+    "available_capacity_kg": 2200,
+    "eta_hours": 2.5,
+    "status": "returning"
+  }
+]
