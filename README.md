@@ -185,9 +185,7 @@ GatiSetu/
 
 ---
 
-## 🏆 Built For
 
-**Google Solution Challenge 2026** — Team Platypus Protocol
 
 **UN SDGs Addressed:**
 - SDG 2: Zero Hunger (efficient farm-to-market supply chains)
