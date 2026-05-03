@@ -1,142 +1,146 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { motion } from 'framer-motion';
-import { Truck, Sprout, ArrowRight, Globe } from 'lucide-react';
+import { Truck, Sprout, ArrowRight, Package, Fuel, Users, TrendingUp, IndianRupee, Leaf, Route } from 'lucide-react';
 
 export default function Login() {
-  const { login, language, setLanguage, t } = useApp();
-  const [name, setName] = useState('');
-  const [selectedRole, setSelectedRole] = useState(null);
+  const { login, language } = useApp();
+  const [kisanName, setKisanName] = useState('');
+  const [sarathiName, setSarathiName] = useState('');
+  const [focusedPanel, setFocusedPanel] = useState(null);
 
-  const handleLogin = (e) => {
+  const handleKisanLogin = (e) => {
     e.preventDefault();
-    if (name.trim() && selectedRole) {
-      login(selectedRole, name.trim());
-    }
+    if (kisanName.trim()) login('kisan', kisanName.trim());
   };
 
+  const handleSarathiLogin = (e) => {
+    e.preventDefault();
+    if (sarathiName.trim()) login('sarathi', sarathiName.trim());
+  };
+
+  const kisanProps = [
+    { icon: IndianRupee, text: language === 'en' ? 'Access pooled logistics and save up to 60% on transport.' : 'परिवहन पर 60% तक बचाएं' },
+    { icon: Users, text: language === 'en' ? 'Pool loads with nearby farmers at Setu Points.' : 'सेतु पॉइंट पर किसानों के साथ भार जोड़ें' },
+    { icon: Package, text: language === 'en' ? 'Get 60% off on return goods (seeds, fertilizer).' : 'वापसी सामान पर 60% छूट पाएं' },
+  ];
+
+  const sarathiProps = [
+    { icon: Route, text: language === 'en' ? 'Maximize earnings by eliminating empty return miles.' : 'खाली वापसी समाप्त कर कमाई बढ़ाएं' },
+    { icon: TrendingUp, text: language === 'en' ? '+59% profit increase per optimized trip.' : 'प्रति यात्रा +59% लाभ वृद्धि' },
+    { icon: Users, text: language === 'en' ? 'Pre-pooled loads ready for pickup at Setu Points.' : 'सेतु पॉइंट पर भार तैयार' },
+  ];
+
   return (
-    <div className="min-h-screen bg-mesh flex items-center justify-center p-4">
-      {/* Ambient glow orbs */}
-      <div className="fixed top-20 left-20 w-72 h-72 bg-invention-orange/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="fixed bottom-20 right-20 w-96 h-96 bg-mint-green/8 rounded-full blur-[150px] pointer-events-none" />
-
-      <motion.div
-        initial={{ opacity: 0, y: 30, scale: 0.95 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="glass-card w-full max-w-md p-8 space-y-8 relative z-10"
+    <div id="login-portal" className="w-full flex flex-col md:flex-row border-t border-border mt-16">
+      {/* ─── KISAN PANEL ─── */}
+      <div
+        className={`flex-1 border-b md:border-b-0 md:border-r border-border flex flex-col justify-center px-8 py-16 lg:px-16 transition-colors cursor-pointer ${
+          focusedPanel === 'kisan' ? 'bg-[#152e1e]' : 'bg-surface'
+        }`}
+        onClick={() => setFocusedPanel('kisan')}
       >
-        {/* Language Toggle */}
-        <div className="flex justify-end">
-          <button
-            onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold text-text-secondary hover:text-text-primary border border-border hover:border-border-hover transition-all"
-          >
-            <Globe size={14} />
-            {language === 'en' ? 'हिन्दी' : 'English'}
-          </button>
-        </div>
-
-        {/* Logo */}
-        <div className="text-center space-y-3">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-            className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-invention-orange to-orange-soft flex items-center justify-center shadow-lg glow-orange"
-          >
-            <span className="text-3xl font-black text-white font-[Outfit]">GS</span>
-          </motion.div>
-          <h1 className="text-3xl font-black text-text-primary font-[Outfit] tracking-tight">
-            Gati<span className="text-gradient-orange">Setu</span>
-          </h1>
-          <p className="text-text-secondary text-sm">
-            {language === 'en' ? 'Agentic Logistics Ecosystem' : 'एजेंटिक लॉजिस्टिक्स इकोसिस्टम'}
-          </p>
-        </div>
-
-        {/* Role Selection */}
-        <div className="space-y-3">
-          <p className="text-xs font-semibold text-text-muted uppercase tracking-widest text-center">
-            {language === 'en' ? 'Select your role' : 'अपनी भूमिका चुनें'}
-          </p>
-
-          <div className="grid grid-cols-2 gap-3">
-            <button
-              onClick={() => setSelectedRole('kisan')}
-              className={`p-4 rounded-xl border transition-all duration-300 group text-center ${
-                selectedRole === 'kisan'
-                  ? 'border-mint-green/40 bg-mint-green/8 shadow-lg glow-mint'
-                  : 'border-border hover:border-mint-green/20 bg-surface-glass hover:bg-mint-green/4'
-              }`}
-            >
-              <div className={`w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 transition-all ${
-                selectedRole === 'kisan' ? 'bg-mint-green/20' : 'bg-white/5 group-hover:bg-mint-green/10'
-              }`}>
-                <Sprout size={24} className={selectedRole === 'kisan' ? 'text-mint-green' : 'text-text-secondary group-hover:text-mint-green'} />
-              </div>
-              <h3 className={`font-bold text-sm ${selectedRole === 'kisan' ? 'text-mint-green' : 'text-text-primary'}`}>
-                {t('kisan')}
-              </h3>
-              <p className="text-[10px] text-text-muted mt-1">
-                {language === 'en' ? 'Pool loads & earn more' : 'भार जोड़ें और कमाएं'}
+        <div className="max-w-md mx-auto w-full space-y-8">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-mint-green flex items-center justify-center" style={{ borderRadius: '2px' }}>
+              <Sprout size={24} className="text-surface" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-black text-mint-green font-[Outfit] tracking-[-0.02em] uppercase m-0">
+                {language === 'en' ? 'Kisan' : 'किसान'}
+              </h2>
+              <p className="text-sm text-text-muted font-medium mt-1">
+                {language === 'en' ? 'Pool & Prosper' : 'जोड़ें और कमाएं'}
               </p>
-            </button>
-
-            <button
-              onClick={() => setSelectedRole('sarathi')}
-              className={`p-4 rounded-xl border transition-all duration-300 group text-center ${
-                selectedRole === 'sarathi'
-                  ? 'border-invention-orange/40 bg-invention-orange/8 shadow-lg glow-orange'
-                  : 'border-border hover:border-invention-orange/20 bg-surface-glass hover:bg-invention-orange/4'
-              }`}
-            >
-              <div className={`w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3 transition-all ${
-                selectedRole === 'sarathi' ? 'bg-invention-orange/20' : 'bg-white/5 group-hover:bg-invention-orange/10'
-              }`}>
-                <Truck size={24} className={selectedRole === 'sarathi' ? 'text-invention-orange' : 'text-text-secondary group-hover:text-invention-orange'} />
-              </div>
-              <h3 className={`font-bold text-sm ${selectedRole === 'sarathi' ? 'text-invention-orange' : 'text-text-primary'}`}>
-                {t('sarathi')}
-              </h3>
-              <p className="text-[10px] text-text-muted mt-1">
-                {language === 'en' ? 'Optimize routes & fuel' : 'मार्ग और ईंधन बचाएं'}
-              </p>
-            </button>
+            </div>
           </div>
-        </div>
 
-        {/* Name Input + Login */}
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div>
-            <label className="text-xs font-semibold text-text-secondary mb-1.5 block">
-              {language === 'en' ? 'Your Name' : 'आपका नाम'}
-            </label>
+          <div className="space-y-4">
+            {kisanProps.map((prop, i) => (
+              <div key={i} className="flex items-start gap-4">
+                <div className="w-6 h-6 mt-0.5 flex shrink-0 items-center justify-center border border-mint-green/30" style={{ borderRadius: '2px' }}>
+                  <prop.icon size={13} className="text-mint-green" />
+                </div>
+                <span className="text-[15px] text-text-secondary leading-snug">{prop.text}</span>
+              </div>
+            ))}
+          </div>
+
+          <form onSubmit={handleKisanLogin} className="space-y-4 pt-4 border-t border-border">
             <input
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder={language === 'en' ? 'Enter your name...' : 'अपना नाम दर्ज करें...'}
-              className="input-dark w-full"
+              value={kisanName}
+              onChange={(e) => setKisanName(e.target.value)}
+              onFocus={() => setFocusedPanel('kisan')}
+              placeholder={language === 'en' ? 'Enter your name to continue...' : 'अपना नाम दर्ज करें...'}
+              className="input-dark input-dark-mint w-full text-base py-4"
               required
             />
+            <button
+              type="submit"
+              disabled={!kisanName.trim()}
+              className="btn-kisan w-full py-4 text-sm flex items-center justify-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              {language === 'en' ? 'Enter Portal as Kisan' : 'किसान के रूप में प्रवेश'}
+              <ArrowRight size={18} />
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {/* ─── SARATHI PANEL ─── */}
+      <div
+        className={`flex-1 flex flex-col justify-center px-8 py-16 lg:px-16 transition-colors cursor-pointer ${
+          focusedPanel === 'sarathi' ? 'bg-[#2a2414]' : 'bg-surface'
+        }`}
+        onClick={() => setFocusedPanel('sarathi')}
+      >
+        <div className="max-w-md mx-auto w-full space-y-8">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-invention-orange flex items-center justify-center" style={{ borderRadius: '2px' }}>
+              <Truck size={24} className="text-surface" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-black text-invention-orange font-[Outfit] tracking-[-0.02em] uppercase m-0">
+                {language === 'en' ? 'Sarathi' : 'सारथी'}
+              </h2>
+              <p className="text-sm text-text-muted font-medium mt-1">
+                {language === 'en' ? 'Route & Earn' : 'मार्ग बनाएं और कमाएं'}
+              </p>
+            </div>
           </div>
 
-          <button
-            type="submit"
-            disabled={!selectedRole || !name.trim()}
-            className="btn-cta w-full py-4 text-base flex items-center justify-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed disabled:transform-none"
-          >
-            {language === 'en' ? 'Enter GatiSetu' : 'गतिसेतु में प्रवेश करें'}
-            <ArrowRight size={18} />
-          </button>
-        </form>
+          <div className="space-y-4">
+            {sarathiProps.map((prop, i) => (
+              <div key={i} className="flex items-start gap-4">
+                <div className="w-6 h-6 mt-0.5 flex shrink-0 items-center justify-center border border-invention-orange/30" style={{ borderRadius: '2px' }}>
+                  <prop.icon size={13} className="text-invention-orange" />
+                </div>
+                <span className="text-[15px] text-text-secondary leading-snug">{prop.text}</span>
+              </div>
+            ))}
+          </div>
 
-        <p className="text-center text-text-muted text-[11px]">
-          © 2026 GatiSetu
-        </p>
-      </motion.div>
+          <form onSubmit={handleSarathiLogin} className="space-y-4 pt-4 border-t border-border">
+            <input
+              type="text"
+              value={sarathiName}
+              onChange={(e) => setSarathiName(e.target.value)}
+              onFocus={() => setFocusedPanel('sarathi')}
+              placeholder={language === 'en' ? 'Enter your name to continue...' : 'अपना नाम दर्ज करें...'}
+              className="input-dark w-full text-base py-4"
+              required
+            />
+            <button
+              type="submit"
+              disabled={!sarathiName.trim()}
+              className="btn-sarathi w-full py-4 text-sm flex items-center justify-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              {language === 'en' ? 'Enter Portal as Sarathi' : 'सारथी के रूप में प्रवेश'}
+              <ArrowRight size={18} />
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

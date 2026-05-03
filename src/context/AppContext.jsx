@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 
 const AppContext = createContext();
 
@@ -13,6 +13,11 @@ const TRANSLATIONS = {
     carbonSaved: 'CO₂ Saved', distanceSaved: 'Distance Saved',
     profitIncrease: 'Profit Increase', totalWeight: 'Total Weight',
     discount: 'Discount', deadMiles: 'Dead Miles Reduced',
+    bookNewLoad: 'Book New Load', activeShipments: 'Active Shipments',
+    gatiPass: 'Gati-Pass', verified: 'Verified', pending: 'Pending',
+    scanGatiPass: 'Scan Gati-Pass', loadVerified: 'Load Verified',
+    specialOffer: 'Special Offer', fuelSavedVsTraditional: 'Fuel Saved vs Traditional',
+    deadMilesEliminated: 'Dead-Miles Eliminated',
   },
   hi: {
     welcome: 'स्वागत है', logout: 'लॉगआउट', kisan: 'किसान', sarathi: 'सारथी',
@@ -24,6 +29,11 @@ const TRANSLATIONS = {
     carbonSaved: 'CO₂ बचाया', distanceSaved: 'दूरी बचाई',
     profitIncrease: 'लाभ वृद्धि', totalWeight: 'कुल वज़न',
     discount: 'छूट', deadMiles: 'डेड माइल्स कम',
+    bookNewLoad: 'नया भार बुक करें', activeShipments: 'सक्रिय शिपमेंट',
+    gatiPass: 'गति-पास', verified: 'सत्यापित', pending: 'लंबित',
+    scanGatiPass: 'गति-पास स्कैन करें', loadVerified: 'भार सत्यापित',
+    specialOffer: 'विशेष प्रस्ताव', fuelSavedVsTraditional: 'पारंपरिक से ईंधन बचत',
+    deadMilesEliminated: 'डेड-माइल्स समाप्त',
   },
 };
 
@@ -35,6 +45,7 @@ export const AppProvider = ({ children }) => {
   const [backhaulData, setBackhaulData] = useState(null);
   const [liveRequests, setLiveRequests] = useState([]);
   const [totalStats, setTotalStats] = useState({ farmers: 0, savings: 0, co2: 0 });
+  const [shipments, setShipments] = useState([]);
 
   const t = (key) => TRANSLATIONS[language]?.[key] || key;
 
@@ -50,7 +61,49 @@ export const AppProvider = ({ children }) => {
     setUserName('');
     setPoolingData(null);
     setBackhaulData(null);
+    setShipments([]);
   };
+
+  const generateShipmentId = useCallback(() => {
+    const ts = Date.now().toString(36).toUpperCase();
+    const rand = Math.random().toString(36).substring(2, 6).toUpperCase();
+    return `GS-${ts}-${rand}`;
+  }, []);
+
+  // Virtual Sarathi driver names for demo auto-accept
+  const VIRTUAL_SARATHIS = ['Rakesh Sarathi', 'Sunil Yadav', 'Mahesh Gupta', 'Pappu Khan', 'Arvind Kumar', 'Baldev Singh'];
+
+  const addShipment = useCallback((shipmentData) => {
+    const shipment = {
+      id: generateShipmentId(),
+      ...shipmentData,
+      status: 'pending',
+      createdAt: new Date().toISOString(),
+      verifiedAt: null,
+      verifiedBy: null,
+    };
+    setShipments(prev => [shipment, ...prev]);
+
+    // Virtual Sarathi: auto-accept after 5 seconds for demo
+    setTimeout(() => {
+      const driverName = VIRTUAL_SARATHIS[Math.floor(Math.random() * VIRTUAL_SARATHIS.length)];
+      setShipments(prev => prev.map(s =>
+        s.id === shipment.id && s.status === 'pending'
+          ? { ...s, status: 'verified', verifiedAt: new Date().toISOString(), verifiedBy: driverName }
+          : s
+      ));
+    }, 5000);
+
+    return shipment;
+  }, [generateShipmentId]);
+
+  const verifyShipment = useCallback((shipmentId, driverName) => {
+    setShipments(prev => prev.map(s =>
+      s.id === shipmentId
+        ? { ...s, status: 'verified', verifiedAt: new Date().toISOString(), verifiedBy: driverName }
+        : s
+    ));
+  }, []);
 
   const addRequest = (requestData) => {
     setLiveRequests(prev => [requestData, ...prev]);
@@ -80,6 +133,7 @@ export const AppProvider = ({ children }) => {
     backhaulData, setBackhaulData,
     liveRequests, addRequest, acceptRequest, completeRequest,
     totalStats,
+    shipments, addShipment, verifyShipment, generateShipmentId,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
