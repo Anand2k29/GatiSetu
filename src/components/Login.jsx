@@ -134,7 +134,7 @@ export default function Login() {
         </form>
 
         <p className="text-center text-text-muted text-[11px]">
-          © 2026 GatiSetu · Team Zenith
+          © 2026 GatiSetu
         </p>
       </motion.div>
     </div>

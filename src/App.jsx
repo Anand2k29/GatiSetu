@@ -172,7 +172,7 @@ function App() {
 
       {/* Footer */}
       <footer className="relative z-10 py-6 text-center text-text-muted text-xs">
-        <p>© 2026 GatiSetu · Agentic Logistics Ecosystem · Team Zenith</p>
+        <p>© 2026 GatiSetu · Agentic Logistics Ecosystem</p>
       </footer>
     </div>
   );

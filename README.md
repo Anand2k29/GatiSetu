@@ -84,4 +84,4 @@ To ensure real-world security and accountability, GatiSetu implements a dynamic 
 2. Sarathis use the built-in scanner to "check-in" at Setu Points, verifying the pickup and building their platform trust score.
 
 ---
-*Built for the Hackathon — Team Zenith*
+
