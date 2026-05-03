@@ -136,7 +136,7 @@ npm run dev
 
 ---
 
-## 📊 Performance Audit (The "Jio Proof" Benchmark)
+## 📊 Performance Audit (The "Setu Proof" Benchmark)
 
 GatiSetu includes a dedicated benchmark comparing its metrics directly against traditional middlemen logistics:
 
