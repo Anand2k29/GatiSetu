@@ -4,8 +4,6 @@
 
 **GatiSetu** is an intelligent, agentic logistics ecosystem designed to bridge the gap between **Kisans** (Farmers) and **Sarathis** (Drivers). By leveraging **Predictive Resource Pooling** and **Dead-Mile Reduction**, GatiSetu significantly lowers transportation costs for farmers while increasing profit margins for drivers.
 
-Built for the **Google Solution Challenge 2026** by Team Platypus Protocol.
-
 ---
 
 ## 💡 The Problem We Solve
