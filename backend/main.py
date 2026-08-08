@@ -1,6 +1,6 @@
 """
 GatiSetu — FastAPI Backend
-Agentic Logistics Ecosystem: Pooling Engine + Backhaul Algorithm + LLM Integration
+Agentic Logistics Ecosystem: Pooling Engine + Backhaul Algorithm + LLM Integration + Driver Reliability Engine
 """
 import sys
 from pathlib import Path
@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # Add backend dir to path so engine/models can be imported
 sys.path.insert(0, str(Path(__file__).parent))
 
-from routers import pool, backhaul, llm
+from routers import pool, backhaul, llm, reliability
 
 app = FastAPI(
     title="GatiSetu API",
@@ -31,6 +31,7 @@ app.add_middleware(
 app.include_router(pool.router)
 app.include_router(backhaul.router)
 app.include_router(llm.router)
+app.include_router(reliability.router)
 
 
 @app.get("/api/health")
@@ -39,5 +40,5 @@ async def health():
         "status": "ok",
         "service": "GatiSetu Backend",
         "version": "1.0.0",
-        "engines": ["pooling", "backhaul", "voice-route", "explainer"]
+        "engines": ["pooling", "backhaul", "voice-route", "explainer", "cancellation-risk"]
     }

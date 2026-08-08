@@ -5,8 +5,9 @@ import Login from './components/Login';
 import KisanDashboard from './components/KisanDashboard';
 import SarathiDashboard from './components/SarathiDashboard';
 import BenchmarkPage from './components/BenchmarkPage';
+import ReliabilityAnalytics from './components/ReliabilityAnalytics';
 import { preloadVoices } from './services/ttsEngine';
-import { Sprout, Truck, LogOut, Globe, BarChart3, Menu, X } from 'lucide-react';
+import { Sprout, Truck, LogOut, Globe, BarChart3, ShieldCheck, Menu, X } from 'lucide-react';
 import './App.css';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       label: userRole === 'kisan' ? t('kisan') : t('sarathi'),
       icon: userRole === 'kisan' ? Sprout : Truck,
     },
+    { id: 'reliability', label: language === 'en' ? 'Driver Reliability' : 'ड्राइवर विश्वसनीयता', icon: ShieldCheck },
     { id: 'benchmark', label: t('benchmark'), icon: BarChart3 },
   ];
 
@@ -46,28 +48,46 @@ function App() {
               </span>
             </div>
 
-            <div className="hidden md:flex items-center gap-0">
-              {navItems.map(item => (
-                <button key={item.id} onClick={() => setCurrentView(item.id)}
-                  className={`flex items-center gap-2 px-5 py-4 text-xs font-bold tracking-wider uppercase transition-all border-b-2 ${
-                    currentView === item.id ? `text-${accentColor} border-b-${accentColor}` : 'text-text-muted border-b-transparent hover:text-text-secondary'
-                  }`} style={{ fontFamily: 'Outfit' }}>
-                  <item.icon size={14} />{item.label}
-                </button>
-              ))}
+            <div className="hidden md:flex items-center gap-1.5 bg-surface/80 p-1 border border-border/80 rounded-xs">
+              {navItems.map(item => {
+                const isActive = currentView === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => setCurrentView(item.id)}
+                    className={`flex items-center gap-2 px-4 py-2 text-xs font-black tracking-wider uppercase transition-all rounded-xs ${
+                      isActive
+                        ? userRole === 'kisan'
+                          ? 'bg-mint-green text-surface shadow-md'
+                          : 'bg-invention-orange text-surface shadow-md'
+                        : 'text-text-secondary hover:text-text-primary hover:bg-surface-elevated'
+                    }`}
+                    style={{ fontFamily: 'Outfit' }}
+                  >
+                    <item.icon size={14} className={isActive ? 'text-surface' : 'text-text-muted'} />
+                    {item.label}
+                  </button>
+                );
+              })}
             </div>
 
             <div className="hidden md:flex items-center gap-3">
-              <span className="text-xs text-text-muted tracking-wide">
+              <span className="text-xs text-text-muted tracking-wide font-[Outfit]">
                 {t('welcome')}, <span className={`text-${accentColor} font-bold`}>{userName}</span>
               </span>
-              <button onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')} className="btn-outline py-1.5 px-3 text-[10px] flex items-center gap-1.5">
-                <Globe size={11} />{language === 'en' ? 'हिन्दी' : 'EN'}
+              <button
+                onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
+                className="px-3 py-2 text-[11px] font-bold uppercase tracking-wider bg-surface hover:bg-surface-elevated border border-border hover:border-invention-orange/50 text-text-primary transition-all rounded-xs flex items-center gap-1.5 font-[Outfit]"
+              >
+                <Globe size={13} className="text-invention-orange" />
+                {language === 'en' ? 'हिन्दी (Hindi)' : 'English (EN)'}
               </button>
-              <button onClick={logout}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-bold tracking-wider uppercase text-danger/70 hover:text-danger border border-danger/20 hover:border-danger/40 transition-all"
-                style={{ borderRadius: '2px', fontFamily: 'Outfit' }}>
-                <LogOut size={11} />{t('logout')}
+              <button
+                onClick={logout}
+                className="flex items-center gap-1.5 px-3 py-2 text-[11px] font-bold tracking-wider uppercase text-danger hover:bg-danger/10 border border-danger/30 hover:border-danger transition-all rounded-xs font-[Outfit]"
+              >
+                <LogOut size={13} />
+                {t('logout')}
               </button>
             </div>
 
@@ -103,6 +123,7 @@ function App() {
 
       <main className="relative z-10 pt-18 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {currentView === 'dashboard' && (userRole === 'kisan' ? <KisanDashboard /> : <SarathiDashboard />)}
+        {currentView === 'reliability' && <ReliabilityAnalytics />}
         {currentView === 'benchmark' && <BenchmarkPage />}
       </main>
 

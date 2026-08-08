@@ -1,5 +1,7 @@
+# GatiSetu Git Ignore Rules
 # Backend
 backend/.env
+
 backend/__pycache__/
 backend/**/__pycache__/
 *.pyc

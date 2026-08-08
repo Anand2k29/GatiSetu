@@ -58,6 +58,29 @@ class Truck(BaseModel):
     available_capacity_kg: float
     eta_hours: float
     status: str = "returning"
+    cancellation_probability_pct: Optional[float] = 1.8
+    reliability_tier: Optional[str] = "Tier-1 Verified"
+
+
+# ─── Sarathi Cancellation Risk & Driver Reliability ─────────────────
+
+class CancellationPredictionRequest(BaseModel):
+    vehicle_type: str = "Medium Truck (3T)"
+    distance_km: float = 25.0
+    vtat_mins: float = 8.0
+
+
+class CancellationPredictionResponse(BaseModel):
+    vehicle_type: str
+    distance_km: float
+    vtat_mins: float
+    cancellation_probability_pct: float
+    reliability_score: float
+    risk_level: str
+    risk_tier: str
+    color_code: str
+    recommendation: str
+
 
 
 # ─── Pooling Engine ────────────────────────────────────────────────
