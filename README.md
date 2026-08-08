@@ -19,7 +19,8 @@
 > [!IMPORTANT]
 > - 🚀 **Live Web Application**: **[https://gati-setu.vercel.app/](https://gati-setu.vercel.app/)**
 > - 📖 **Standalone Visual User Guide Web Page**: **[https://gati-setu.vercel.app/guide.html](https://gati-setu.vercel.app/guide.html)**
-> - 📄 **Illiteracy-Accessible Workflow Manual**: **[USER_GUIDE.md](./USER_GUIDE.md)**
+> - 📄 **Voice-First Universal User Guide**: **[USER_GUIDE.md](./USER_GUIDE.md)**
+
 
 ---
 
@@ -214,7 +215,7 @@ GatiSetu/
 │   │   └── backhaul.py                # REST API for backhaul offers
 │   └── main.py                        # FastAPI application entry point
 ├── public/
-│   ├── guide.html                     # Standalone Illiteracy-Accessible User Guide Web Page
+│   ├── guide.html                     # Standalone Voice-First Universal User Guide Web Page
 │   └── hero_banner.png                # Hero banner asset
 ├── src/
 │   ├── components/
@@ -226,8 +227,9 @@ GatiSetu/
 │   │   └── SarathiDashboard.jsx       # Driver route efficiency & QR scanner
 │   ├── App.jsx                        # Main navigation & routing
 │   └── index.css                      # Industrial design system
-├── USER_GUIDE.md                      # Illiteracy-Accessible Workflow Manual
+├── USER_GUIDE.md                      # Voice-First Universal User Guide
 └── README.md
+
 ```
 
 ---

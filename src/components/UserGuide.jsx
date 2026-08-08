@@ -71,8 +71,9 @@ export default function UserGuide({ onClose }) {
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-black text-mint-green uppercase tracking-widest bg-mint-green/10 px-2 py-0.5 border border-mint-green/30 rounded-xs">
-                  Illiteracy-Accessible Guide
+                  Voice-First Universal Guide
                 </span>
+
               </div>
               <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mt-1">
                 GatiSetu Visual User Guide & Workflow
