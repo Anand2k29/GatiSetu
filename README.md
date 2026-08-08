@@ -2,9 +2,12 @@
 
 > **Empowering Bharat's Agri-Supply Chain** — Powered by Machine Learning Trained on 150,000 Industrial Freight Logistics Records.
 
+> 📖 **Visual How-To-Use Guide (Illiteracy-Accessible)**: Read the step-by-step visual workflow manual at **[USER_GUIDE.md](./USER_GUIDE.md)** to see how Kisans book loads via 🎙️ Voice Speech and how Sarathis are auto-assigned via Machine Learning.
+
 **GatiSetu** is an intelligent, dataset-driven agentic logistics ecosystem designed to connect **Kisans** (Farmers) with **Sarathis** (Drivers). By combining a **150,000-Record Driver Reliability & Cancellation Risk Engine** with **Predictive Resource Pooling** and **Dead-Mile Reduction**, GatiSetu lowers transport costs for farmers by **58%** while increasing driver earnings by **59%**.
 
 ---
+
 
 ## 📊 Dataset Architecture & Industrial Data Engineering
 
