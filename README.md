@@ -1,23 +1,45 @@
 # GatiSetu: Dataset-Driven Agentic Logistics Ecosystem 🚜🚛
 
-> **Empowering Bharat's Agri-Supply Chain** — Powered by Machine Learning Trained on 150,000 Industrial Freight Logistics Records.
+<div align="center">
 
+![Vercel Deployment](https://img.shields.io/badge/Vercel-Hosted_Live-10B981?style=for-the-badge&logo=vercel)
+![Dataset Trained](https://img.shields.io/badge/Dataset-150%2C000_Records-F59E0B?style=for-the-badge&logo=python)
+![React 19](https://img.shields.io/badge/React_19-Vite_7-61DAFB?style=for-the-badge&logo=react)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.109.0-009688?style=for-the-badge&logo=fastapi)
+![UN SDGs](https://img.shields.io/badge/UN_SDGs-2_%7C_8_%7C_9_%7C_13-00B0FF?style=for-the-badge)
 
-> 📖 **Standalone Visual User Guide Web Page (Illiteracy-Accessible)**: Access the standalone web page manual at **[guide.html](./public/guide.html)** or **[USER_GUIDE.md](./USER_GUIDE.md)** to see how Kisans book loads via 🎙️ Voice Speech and how Sarathis are auto-assigned via Machine Learning.
+</div>
 
-**GatiSetu** is an intelligent, dataset-driven agentic logistics ecosystem designed to connect **Kisans** (Farmers) with **Sarathis** (Drivers). By combining a **150,000-Record Driver Reliability & Cancellation Risk Engine** with **Predictive Resource Pooling** and **Dead-Mile Reduction**, GatiSetu lowers transport costs for farmers by **58%** while increasing driver earnings by **59%**.
-
+> **Empowering Bharat's Agri-Supply Chain** — Machine Learning Trained on **150,000 Industrial Freight Logistics Records**.
 
 ---
 
+### 🌐 Live Production Links
+
+> [!IMPORTANT]
+> - 🚀 **Live Web Application**: **[https://gati-setu.vercel.app/](https://gati-setu.vercel.app/)**
+> - 📖 **Standalone Visual User Guide Web Page**: **[https://gati-setu.vercel.app/guide.html](https://gati-setu.vercel.app/guide.html)**
+> - 📄 **Illiteracy-Accessible Workflow Manual**: **[USER_GUIDE.md](./USER_GUIDE.md)**
+
+---
+
+## 📌 Executive Summary
+
+**GatiSetu** is an intelligent, dataset-driven agentic logistics ecosystem engineered to connect **Kisans** (Farmers) with **Sarathis** (Drivers). By combining a **150,000-Record Driver Reliability & Cancellation Risk Engine** with **Predictive Resource Pooling** and **Dead-Mile Reduction**, GatiSetu lowers transport costs for farmers by **58%** while increasing driver earnings by **59%**.
+
+---
 
 ## 📊 Dataset Architecture & Industrial Data Engineering
 
 GatiSetu's core intelligence is trained on an **Industrial Logistics & Driver Reliability Dataset** containing **150,000 real-world freight transactions** ([driver_cancellation.csv](file:///p:/GatiSetu/GatiSetu/backend/data/driver_cancellation.csv)).
 
+> [!NOTE]
+> All dataset features are normalized to comply with strict non-branding requirements while preserving 100% mathematical fidelity.
+
 ### 1. Dataset Breakdown & Baseline Metrics (150,000 Records)
+
 | Metric Category | Records / Value | Percentage | Industrial Significance |
-|:---|:---|:---|:---|
+|:---|:---:|:---:|:---|
 | **Total Analyzed Shipments** | `150,000` | 100.0% | Complete dataset sample size |
 | **Completed Deliveries** | `93,000` | 62.0% | Successful fulfillment baseline |
 | **Driver Cancellations** | `27,000` | 18.0% | Un-pooled driver dropout risk baseline |
@@ -31,7 +53,7 @@ GatiSetu's core intelligence is trained on an **Industrial Logistics & Driver Re
 ---
 
 ### 2. Dataset Field Schema
-```
+```csv
 Date, Time, Booking ID, Booking Status, Customer ID, Vehicle Type,
 Pickup Location, Drop Location, Avg VTAT, Avg CTAT, Cancelled Rides by Customer,
 Reason for cancelling by Customer, Cancelled Rides by Driver, Driver Cancellation Reason,
@@ -44,7 +66,7 @@ Incomplete Rides, Incomplete Rides Reason, Booking Value, Ride Distance, Driver 
 The dataset covers 7 normalized agricultural transport vehicle classes:
 
 | Vehicle Class | Capacity | Dataset Volume | Primary Logistics Use Case |
-|:---|:---|:---|:---|
+|:---|:---:|:---:|:---|
 | **Auto Cargo (3W)** | `500 kg` | `37,419` | Local village collector & Setu Point feeder |
 | **Small Pickup (1.5T)** | `1,500 kg` | `29,806` | Short radius multi-farm pooling |
 | **Medium Truck (3T)** | `3,000 kg` | `27,141` | Standard Mandi transport vehicle |
@@ -140,13 +162,13 @@ graph TD
 ### Frontend (React 19 + Vite 7)
 - **Map Interface**: Google Maps Live Tiles (Roadmap, Satellite, Terrain) via Leaflet
 - **Data Visualization**: Recharts + Framer Motion + CountUp
-- **UI Components**: `ReliabilityAnalytics.jsx`, `SetuPointMap.jsx`, `BenchmarkPage.jsx`
+- **UI Components**: `ReliabilityAnalytics.jsx`, `SetuPointMap.jsx`, `BenchmarkPage.jsx`, `UserGuide.jsx`
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Backend Setup
+### 1. Backend Setup (FastAPI Engine)
 ```powershell
 cd backend
 
@@ -162,13 +184,13 @@ uvicorn main:app --reload --port 8000
 ```
 > *Backend API: `http://localhost:8000` | Swagger Docs: `http://localhost:8000/docs`*
 
-### 2. Frontend Setup
+### 2. Frontend Setup (React + Vite)
 ```powershell
 # From project root
 npm install
 npm run dev
 ```
-> *Frontend App: `http://localhost:5173`*
+> *Frontend App: `http://localhost:5173` | Standalone Guide: `http://localhost:5173/guide.html`*
 
 ---
 
@@ -191,15 +213,20 @@ GatiSetu/
 │   │   ├── pool.py                    # REST API for resource pooling
 │   │   └── backhaul.py                # REST API for backhaul offers
 │   └── main.py                        # FastAPI application entry point
+├── public/
+│   ├── guide.html                     # Standalone Illiteracy-Accessible User Guide Web Page
+│   └── hero_banner.png                # Hero banner asset
 ├── src/
 │   ├── components/
 │   │   ├── ReliabilityAnalytics.jsx   # 150k Dataset UI Dashboard & Risk Simulator
 │   │   ├── SetuPointMap.jsx           # Google Maps live tiles interface
 │   │   ├── BenchmarkPage.jsx          # Interactive Audit Simulator & Radar Chart
+│   │   ├── UserGuide.jsx              # Audio voice synthesis user guide component
 │   │   ├── KisanDashboard.jsx         # Farmer load booking & status
 │   │   └── SarathiDashboard.jsx       # Driver route efficiency & QR scanner
 │   ├── App.jsx                        # Main navigation & routing
 │   └── index.css                      # Industrial design system
+├── USER_GUIDE.md                      # Illiteracy-Accessible Workflow Manual
 └── README.md
 ```
 
