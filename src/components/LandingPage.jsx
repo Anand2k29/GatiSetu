@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Polyline, Circle } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import {
   Truck, Sprout, ArrowRight, TrendingDown, TrendingUp, AlertTriangle,
   Route, Users, Zap, IndianRupee, Leaf, MapPin, Package, ChevronRight, BarChart3
@@ -6,6 +9,7 @@ import {
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Login from './Login';
 import { useApp } from '../context/AppContext';
+
 
 const CHART_DATA = [
   { name: 'Cost/km', Traditional: 100, GatiSetu: 42 },
