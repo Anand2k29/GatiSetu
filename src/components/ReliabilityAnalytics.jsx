@@ -6,8 +6,9 @@ import {
 } from 'recharts';
 import {
   ShieldCheck, AlertTriangle, Activity, Truck, CheckCircle2,
-  TrendingUp, RefreshCw, BarChart2, Zap, ArrowUpRight, Award, ChevronRight, Gauge
+  TrendingUp, RefreshCw, BarChart2, Zap, ArrowUpRight, Award, ChevronRight, ChevronDown, Gauge
 } from 'lucide-react';
+
 import { useApp } from '../context/AppContext';
 
 export default function ReliabilityAnalytics() {
@@ -22,6 +23,17 @@ export default function ReliabilityAnalytics() {
   const [distanceKm, setDistanceKm] = useState(25);
   const [vtatMins, setVtatMins] = useState(8);
   const [prediction, setPrediction] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const vehicleOptions = [
+    { value: 'Medium Truck (3T)', label: 'Medium Truck (3T)', sub: 'Standard Mandi Transport' },
+    { value: 'Small Pickup (1.5T)', label: 'Small Pickup (1.5T)', sub: 'Short Radius Pooling' },
+    { value: 'Heavy Freight (5T)', label: 'Heavy Freight (5T)', sub: 'Inter-district Mandi' },
+    { value: 'Auto Cargo (3W)', label: 'Auto Cargo (3W)', sub: 'Local Village Collector' },
+    { value: 'EV Eco Loader (250kg)', label: 'EV Eco Loader (250kg)', sub: 'Micro-Hub express' },
+    { value: 'Container Truck (10T)', label: 'Container Truck (10T)', sub: 'Bulk Inter-state' }
+  ];
+
 
   const fetchStats = async () => {
     setLoading(true);
@@ -263,21 +275,57 @@ export default function ReliabilityAnalytics() {
 
           {/* Form Controls */}
           <div className="space-y-4">
-            <div>
+            <div className="relative">
               <label className="block text-[11px] font-bold text-text-secondary uppercase tracking-wider mb-1.5 font-[Outfit]">Vehicle Type Class</label>
-              <select
-                value={vehicleType}
-                onChange={(e) => setVehicleType(e.target.value)}
-                className="w-full bg-surface border border-border/80 p-3 text-xs text-white rounded-xs focus:border-invention-orange outline-none font-[Outfit] transition-colors"
+              <button
+                type="button"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="w-full bg-surface border border-border/80 p-3 text-xs text-white rounded-xs flex items-center justify-between font-[Outfit] hover:border-invention-orange transition-colors"
               >
-                <option value="Medium Truck (3T)">Medium Truck (3T) — Standard Mandi Transport</option>
-                <option value="Small Pickup (1.5T)">Small Pickup (1.5T) — Short Radius Pooling</option>
-                <option value="Heavy Freight (5T)">Heavy Freight (5T) — Inter-district Mandi</option>
-                <option value="Auto Cargo (3W)">Auto Cargo (3W) — Local Village Collector</option>
-                <option value="EV Eco Loader (250kg)">EV Eco Loader (250kg) — Micro-Hub express</option>
-                <option value="Container Truck (10T)">Container Truck (10T) — Bulk Inter-state</option>
-              </select>
+                <div className="flex items-center gap-2">
+                  <Truck size={15} className="text-invention-orange" />
+                  <span className="font-bold">{vehicleType}</span>
+                </div>
+                <ChevronDown size={14} className={`text-text-muted transition-transform duration-200 ${dropdownOpen ? 'rotate-180 text-invention-orange' : ''}`} />
+              </button>
+
+              <AnimatePresence>
+                {dropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 2 }}
+                    exit={{ opacity: 0, y: -5 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 right-0 mt-1 bg-[#0F172A] border border-invention-orange/40 rounded-xs shadow-2xl z-50 py-1 font-[Outfit]"
+                  >
+                    {vehicleOptions.map((opt) => {
+                      const isSelected = vehicleType === opt.value;
+                      return (
+                        <div
+                          key={opt.value}
+                          onClick={() => {
+                            setVehicleType(opt.value);
+                            setDropdownOpen(false);
+                          }}
+                          className={`px-3.5 py-2.5 text-xs flex items-center justify-between cursor-pointer transition-all ${
+                            isSelected
+                              ? 'bg-invention-orange/20 text-invention-orange font-black border-l-2 border-invention-orange'
+                              : 'text-text-primary hover:bg-surface-elevated hover:text-white'
+                          }`}
+                        >
+                          <div>
+                            <div className="font-bold text-xs">{opt.label}</div>
+                            <div className="text-[10px] text-text-muted font-[Plus_Jakarta_Sans]">{opt.sub}</div>
+                          </div>
+                          {isSelected && <CheckCircle2 size={14} className="text-invention-orange" />}
+                        </div>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
+
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="p-3 bg-surface border border-border/60 rounded-xs space-y-2">
