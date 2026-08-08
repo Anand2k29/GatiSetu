@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Login from './Login';
+import UserGuide from './UserGuide';
 import { useApp } from '../context/AppContext';
 
 
@@ -18,6 +19,7 @@ const CHART_DATA = [
 
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
+  const [showGuideModal, setShowGuideModal] = useState(false);
   const { language, setLanguage } = useApp();
 
   useEffect(() => {
@@ -49,6 +51,12 @@ export default function LandingPage() {
             <a href="#problem" className="hover:text-invention-orange transition-colors">The Problem</a>
             <a href="#solution" className="hover:text-mint-green transition-colors">How it Works</a>
             <a href="#audit" className="hover:text-invention-orange transition-colors">Performance Audit</a>
+            <button
+              onClick={() => setShowGuideModal(true)}
+              className="text-mint-green hover:text-white transition-colors flex items-center gap-1.5 font-black uppercase"
+            >
+              📖 User Guide
+            </button>
           </div>
           <div className="flex items-center gap-4">
             <button onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')} className="text-xs font-bold text-text-primary uppercase border border-border px-3 py-1.5 hover:bg-surface-elevated transition-colors" style={{ borderRadius: '2px' }}>
@@ -60,6 +68,15 @@ export default function LandingPage() {
           </div>
         </div>
       </nav>
+
+      {/* User Guide Modal */}
+      {showGuideModal && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-xs shadow-2xl">
+            <UserGuide onClose={() => setShowGuideModal(false)} />
+          </div>
+        </div>
+      )}
 
       {/* ─── Hero Section (Full-Width Immersive) ─── */}
       <section className="relative min-h-screen flex items-center overflow-hidden">

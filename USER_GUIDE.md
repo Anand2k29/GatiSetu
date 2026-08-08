@@ -96,4 +96,4 @@ graph TD
 Loads are aggregated at Virtual **Setu Points** — recognizable local landmarks within a 10km radius (such as the village Panchayat Bhawan, Temple Chowk, or Cooperative Society).
 
 #### Q3: How do I access the interactive Google Maps and Reliability Analytics?
-Simply open [http://localhost:5173](http://localhost:5173) and click on the **Driver Reliability** or **Benchmark** tabs in the top navigation bar!
+Simply open [https://gati-setu.vercel.app/]() and click on the **Driver Reliability** or **Benchmark** tabs in the top navigation bar!

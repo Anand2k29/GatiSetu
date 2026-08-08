@@ -6,8 +6,9 @@ import KisanDashboard from './components/KisanDashboard';
 import SarathiDashboard from './components/SarathiDashboard';
 import BenchmarkPage from './components/BenchmarkPage';
 import ReliabilityAnalytics from './components/ReliabilityAnalytics';
+import UserGuide from './components/UserGuide';
 import { preloadVoices } from './services/ttsEngine';
-import { Sprout, Truck, LogOut, Globe, BarChart3, ShieldCheck, Menu, X } from 'lucide-react';
+import { Sprout, Truck, LogOut, Globe, BarChart3, ShieldCheck, BookOpen, Menu, X } from 'lucide-react';
 import './App.css';
 
 function App() {
@@ -29,7 +30,9 @@ function App() {
     },
     { id: 'reliability', label: language === 'en' ? 'Driver Reliability' : 'ड्राइवर विश्वसनीयता', icon: ShieldCheck },
     { id: 'benchmark', label: t('benchmark'), icon: BarChart3 },
+    { id: 'guide', label: language === 'en' ? 'User Guide' : 'उपयोगकर्ता मार्गदर्शिका', icon: BookOpen },
   ];
+
 
   const accentColor = userRole === 'kisan' ? 'mint-green' : 'invention-orange';
 
@@ -125,7 +128,9 @@ function App() {
         {currentView === 'dashboard' && (userRole === 'kisan' ? <KisanDashboard /> : <SarathiDashboard />)}
         {currentView === 'reliability' && <ReliabilityAnalytics />}
         {currentView === 'benchmark' && <BenchmarkPage />}
+        {currentView === 'guide' && <UserGuide />}
       </main>
+
 
       <footer className="py-4 text-center border-t border-border">
         <p className="text-text-muted text-[10px] tracking-wider uppercase font-medium" style={{ fontFamily: 'Outfit' }}>
