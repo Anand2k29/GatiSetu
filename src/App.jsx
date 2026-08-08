@@ -72,7 +72,16 @@ function App() {
                   </button>
                 );
               })}
+              <a
+                href="/guide.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-2 text-xs font-black tracking-wider uppercase text-mint-green hover:bg-mint-green/10 border border-mint-green/30 hover:border-mint-green transition-all rounded-xs font-[Outfit]"
+              >
+                <BookOpen size={14} /> Guide ↗
+              </a>
             </div>
+
 
             <div className="hidden md:flex items-center gap-3">
               <span className="text-xs text-text-muted tracking-wide font-[Outfit]">

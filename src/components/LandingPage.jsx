@@ -51,12 +51,15 @@ export default function LandingPage() {
             <a href="#problem" className="hover:text-invention-orange transition-colors">The Problem</a>
             <a href="#solution" className="hover:text-mint-green transition-colors">How it Works</a>
             <a href="#audit" className="hover:text-invention-orange transition-colors">Performance Audit</a>
-            <button
-              onClick={() => setShowGuideModal(true)}
+            <a
+              href="/guide.html"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-mint-green hover:text-white transition-colors flex items-center gap-1.5 font-black uppercase"
             >
-              📖 User Guide
-            </button>
+              📖 User Guide ↗
+            </a>
+
           </div>
           <div className="flex items-center gap-4">
             <button onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')} className="text-xs font-bold text-text-primary uppercase border border-border px-3 py-1.5 hover:bg-surface-elevated transition-colors" style={{ borderRadius: '2px' }}>
