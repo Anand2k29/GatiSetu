@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GatiSetu User Guide — Illiteracy-Accessible Visual Manual</title>
+  <title>GatiSetu — Illiteracy-Accessible Visual User Guide & Manual</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,41 +42,99 @@
     .card-industrial {
       background-color: #131B2E;
       border: 1px solid #334155;
-      border-radius: 2px;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     }
+    .glow-mint {
+      box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.3);
+    }
+    .glow-orange {
+      box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.3);
+    }
+    .glow-blue {
+      box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Print Styles — Render FULL Guide in PDF */
     @media print {
-      .no-print { display: none !important; }
-      body { background-color: #fff !important; color: #000 !important; }
-      .card-industrial { border: 1px solid #ccc !important; background-color: #fff !important; color: #000 !important; }
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        padding: 0 !important;
+      }
+      header {
+        border-bottom: 2px solid #0f172a !important;
+        padding-bottom: 12px !important;
+        margin-bottom: 20px !important;
+      }
+      .card-industrial {
+        background-color: #f8fafc !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #0f172a !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        margin-bottom: 20px !important;
+      }
+      /* Force all hidden tab sections to display in PDF print */
+      #content-kisan, #content-sarathi, #content-backhaul, #content-faq, #content-comparison {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      .print-title {
+        color: #0f172a !important;
+      }
+      .text-white {
+        color: #0f172a !important;
+      }
+      .text-gray-300, .text-gray-400 {
+        color: #334155 !important;
+      }
+      .bg-surface {
+        background-color: #ffffff !important;
+      }
+      .bg-surface-elevated {
+        background-color: #f1f5f9 !important;
+      }
+      @page {
+        margin: 12mm;
+        size: A4;
+      }
     }
   </style>
 </head>
 <body class="min-h-screen p-4 sm:p-8">
 
   <!-- Top Navigation Header -->
-  <header class="max-w-6xl mx-auto border-b border-border pb-6 mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 bg-mint-green flex items-center justify-center rounded-xs shadow-lg text-surface font-black text-lg font-outfit">
+  <header class="max-w-6xl mx-auto border-b border-border/80 pb-6 mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div class="flex items-center gap-3.5">
+      <div class="w-12 h-12 bg-gradient-to-br from-mint-green to-emerald-600 flex items-center justify-center rounded-xs shadow-xl text-surface font-black text-xl font-outfit">
         GS
       </div>
       <div>
-        <div className="flex items-center gap-2">
-          <span class="text-[10px] font-black text-mint-green uppercase tracking-widest bg-mint-green/10 px-2 py-0.5 border border-mint-green/30 rounded-xs">
+        <div class="flex items-center gap-2">
+          <span class="text-[10px] font-black text-mint-green uppercase tracking-widest bg-mint-green/10 px-2.5 py-0.5 border border-mint-green/30 rounded-xs">
             Illiteracy-Accessible Visual Manual
           </span>
+          <span class="text-[10px] font-black text-invention-orange uppercase tracking-widest bg-invention-orange/10 px-2.5 py-0.5 border border-invention-orange/30 rounded-xs">
+            150,000 Dataset AI
+          </span>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mt-1">
-          GatiSetu Standalone User Guide & Workflow
+        <h1 class="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mt-1 print-title">
+          GatiSetu Visual User Guide & Workflow Manual
         </h1>
       </div>
     </div>
 
     <div class="flex items-center gap-3 no-print">
-      <button onclick="window.print()" class="px-4 py-2 bg-surface-elevated border border-border text-xs font-bold uppercase tracking-wider text-text-primary hover:text-white hover:border-invention-orange rounded-xs transition-all shadow-md">
-        🖨️ Print / Save PDF
+      <button onclick="window.print()" class="px-5 py-2.5 bg-surface-elevated border border-border text-xs font-bold uppercase tracking-wider text-text-primary hover:text-white hover:border-invention-orange rounded-xs transition-all shadow-lg flex items-center gap-2">
+        🖨️ Print / Save Full PDF Guide
       </button>
-      <a href="/" class="px-5 py-2 bg-mint-green text-surface font-black text-xs uppercase tracking-wider rounded-xs hover:bg-emerald-400 transition-all shadow-lg">
-        Go to Main App 🚀
+      <a href="/" class="px-6 py-2.5 bg-mint-green text-surface font-black text-xs uppercase tracking-wider rounded-xs hover:bg-emerald-400 transition-all shadow-xl flex items-center gap-2">
+        Launch App 🚀
       </a>
     </div>
   </header>
@@ -84,201 +142,297 @@
   <!-- Main Container -->
   <main class="max-w-6xl mx-auto space-y-8">
 
-    <!-- Interactive Navigation Tabs -->
-    <div class="flex flex-wrap gap-2 bg-surface-elevated p-1.5 border border-border rounded-xs no-print">
-      <button id="tab-kisan" onclick="switchTab('kisan')" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xs transition-all bg-mint-green text-surface shadow-lg">
+    <!-- Interactive Navigation Tabs (Hidden in Print PDF) -->
+    <div class="flex flex-wrap gap-2 bg-surface-elevated p-2 border border-border rounded-xs no-print">
+      <button id="tab-kisan" onclick="switchTab('kisan')" class="px-5 py-3 text-xs font-bold uppercase tracking-wider rounded-xs transition-all bg-mint-green text-surface shadow-lg">
         🌾 1. Kisan Voice Booking
       </button>
-      <button id="tab-sarathi" onclick="switchTab('sarathi')" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xs transition-all text-gray-400 hover:text-white">
+      <button id="tab-sarathi" onclick="switchTab('sarathi')" class="px-5 py-3 text-xs font-bold uppercase tracking-wider rounded-xs transition-all text-gray-400 hover:text-white">
         🚛 2. Driver ML Assignment
       </button>
-      <button id="tab-backhaul" onclick="switchTab('backhaul')" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xs transition-all text-gray-400 hover:text-white">
+      <button id="tab-backhaul" onclick="switchTab('backhaul')" class="px-5 py-3 text-xs font-bold uppercase tracking-wider rounded-xs transition-all text-gray-400 hover:text-white">
         🌱 3. Return Backhaul Monetization
       </button>
-      <button id="tab-faq" onclick="switchTab('faq')" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xs transition-all text-gray-400 hover:text-white">
+      <button id="tab-comparison" onclick="switchTab('comparison')" class="px-5 py-3 text-xs font-bold uppercase tracking-wider rounded-xs transition-all text-gray-400 hover:text-white">
+        📊 Performance Impact
+      </button>
+      <button id="tab-faq" onclick="switchTab('faq')" class="px-5 py-3 text-xs font-bold uppercase tracking-wider rounded-xs transition-all text-gray-400 hover:text-white">
         ❓ FAQ & Accessibility
+      </button>
+      <button onclick="showAllForPrint()" class="px-4 py-3 text-xs font-bold uppercase tracking-wider rounded-xs text-invention-orange bg-invention-orange/10 border border-invention-orange/30 hover:bg-invention-orange hover:text-surface transition-all ml-auto">
+        📖 View All Sections
       </button>
     </div>
 
-    <!-- TAB 1: Kisan Voice Booking -->
+    <!-- SECTION 1: Kisan Voice Booking -->
     <section id="content-kisan" class="space-y-6">
-      <div class="card-industrial p-6 sm:p-8 bg-gradient-to-r from-mint-green/15 via-surface-elevated to-surface-elevated border-l-4 border-l-mint-green space-y-6">
+      <div class="card-industrial p-6 sm:p-8 bg-gradient-to-r from-mint-green/15 via-surface-elevated to-surface-elevated border-l-4 border-l-mint-green glow-mint space-y-6">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h2 class="text-xl font-black uppercase text-mint-green">
-              Voice-First Order Booking (No Literacy Barrier)
+            <div class="text-[10px] font-black text-mint-green uppercase tracking-wider font-outfit">Module 01</div>
+            <h2 class="text-xl sm:text-2xl font-black uppercase text-mint-green">
+              Voice-First Order Booking (Zero Literacy Barrier)
             </h2>
-            <p class="text-xs text-gray-400 mt-1 font-sans">
-              Farmers press the green microphone button and speak in Hindi or English. No reading or typing required!
+            <p class="text-xs text-gray-300 mt-1 font-sans">
+              Designed so any Kisan can book a load in 3 simple steps without reading or writing.
             </p>
           </div>
 
-          <button onclick="playVoiceDemo()" id="audio-btn" class="flex items-center gap-2.5 px-5 py-3 rounded-xs font-bold text-xs uppercase tracking-wider bg-mint-green/20 text-mint-green border border-mint-green/40 hover:bg-mint-green hover:text-surface transition-all shadow-xl no-print">
+          <button onclick="playVoiceDemo()" id="audio-btn" class="flex items-center gap-2.5 px-6 py-3 rounded-xs font-bold text-xs uppercase tracking-wider bg-mint-green/20 text-mint-green border border-mint-green/40 hover:bg-mint-green hover:text-surface transition-all shadow-xl no-print">
             🔊 Hear Voice Demo
           </button>
         </div>
 
         <!-- 3 Step Visual Process -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
-          <div class="p-5 bg-surface border border-border space-y-3 relative overflow-hidden group hover:border-mint-green transition-all">
-            <div class="w-10 h-10 bg-mint-green/20 text-mint-green flex items-center justify-center rounded-xs font-black text-lg">
-              1
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+          <div class="p-6 bg-surface border border-border space-y-3 relative overflow-hidden group hover:border-mint-green transition-all rounded-xs">
+            <div class="w-12 h-12 bg-mint-green/20 text-mint-green flex items-center justify-center rounded-xs font-black text-xl">
+              01
             </div>
             <h3 class="text-sm font-bold uppercase text-white">
               🎙️ Press & Speak
             </h3>
             <p class="text-xs text-gray-300 leading-relaxed font-sans">
-              Press the big green microphone button and speak naturally: <br>
-              <span class="text-mint-green font-semibold">"रामपुर से 350 किलो गेहूं आजादपुर मंडी"</span>
+              Press the big green microphone button on your phone screen and speak in Hindi or English:
             </p>
+            <div class="p-3 bg-mint-green/10 border border-mint-green/30 text-mint-green font-bold text-xs rounded-xs">
+              "रामपुर से 350 किलो गेहूं आजादपुर मंडी"
+            </div>
           </div>
 
-          <div class="p-5 bg-surface border border-border space-y-3 relative overflow-hidden group hover:border-mint-green transition-all">
-            <div class="w-10 h-10 bg-mint-green/20 text-mint-green flex items-center justify-center rounded-xs font-black text-lg">
-              2
+          <div class="p-6 bg-surface border border-border space-y-3 relative overflow-hidden group hover:border-mint-green transition-all rounded-xs">
+            <div class="w-12 h-12 bg-mint-green/20 text-mint-green flex items-center justify-center rounded-xs font-black text-xl">
+              02
             </div>
             <h3 class="text-sm font-bold uppercase text-white">
-              🔊 Audio Read-Back
+              🔊 Audio Confirmation
             </h3>
             <p class="text-xs text-gray-300 leading-relaxed font-sans">
-              The AI parses speech into structured JSON and reads back the order confirmation in Hindi out loud so you know it's accurate.
+              GatiSetu's Agentic LLM translates your voice into structured data and reads back the confirmation out loud:
             </p>
+            <div class="p-3 bg-surface-elevated border border-border text-gray-200 font-semibold text-[11px] rounded-xs font-sans">
+              "आपका ऑर्डर दर्ज हो गया है! रामपुर पंचायत भवन सेतु पॉइंट से पिकअप होगा।"
+            </div>
           </div>
 
-          <div class="p-5 bg-surface border border-border space-y-3 relative overflow-hidden group hover:border-mint-green transition-all">
-            <div class="w-10 h-10 bg-mint-green/20 text-mint-green flex items-center justify-center rounded-xs font-black text-lg">
-              3
+          <div class="p-6 bg-surface border border-border space-y-3 relative overflow-hidden group hover:border-mint-green transition-all rounded-xs">
+            <div class="w-12 h-12 bg-mint-green/20 text-mint-green flex items-center justify-center rounded-xs font-black text-xl">
+              03
             </div>
             <h3 class="text-sm font-bold uppercase text-white">
               📱 Gati-Pass QR Code
             </h3>
             <p class="text-xs text-gray-300 leading-relaxed font-sans">
-              A digital green QR code is generated. Show your phone screen to the driver when they arrive at the Setu Point — no paperwork!
+              A digital green QR code appears on your screen. Show your phone screen to the driver upon arrival — zero paperwork required!
             </p>
+            <div class="p-3 bg-mint-green/10 border border-mint-green/30 text-mint-green font-bold text-xs rounded-xs text-center">
+              ✓ Digital Verification Pass Generated
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 2: Sarathi ML Assignment -->
-    <section id="content-sarathi" class="space-y-6 hidden">
-      <div class="card-industrial p-6 sm:p-8 bg-gradient-to-r from-invention-orange/15 via-surface-elevated to-surface-elevated border-l-4 border-l-invention-orange space-y-6">
+    <!-- SECTION 2: Sarathi ML Assignment -->
+    <section id="content-sarathi" class="space-y-6">
+      <div class="card-industrial p-6 sm:p-8 bg-gradient-to-r from-invention-orange/15 via-surface-elevated to-surface-elevated border-l-4 border-l-invention-orange glow-orange space-y-6">
         <div>
-          <h2 class="text-xl font-black uppercase text-invention-orange">
+          <div class="text-[10px] font-black text-invention-orange uppercase tracking-wider font-outfit">Module 02</div>
+          <h2 class="text-xl sm:text-2xl font-black uppercase text-invention-orange">
             Dataset-Driven Driver Matchmaking & Setu Point Pooling
           </h2>
-          <p class="text-xs text-gray-400 mt-1 font-sans">
+          <p class="text-xs text-gray-300 mt-1 font-sans">
             Trained on 150,000 real-world freight records to eliminate cancellation dropouts and maximize driver profits.
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="p-5 bg-surface border border-border space-y-3">
+          <div class="p-6 bg-surface border border-border space-y-4 rounded-xs">
             <div class="flex items-center gap-2 text-invention-orange font-bold text-sm uppercase">
-              🛡️ Tier-1 Reliability Matching
+              🛡️ Tier-1 Reliability Matching Algorithm
             </div>
             <p class="text-xs text-gray-300 leading-relaxed font-sans">
-              High-value produce is assigned to drivers with &lt;4.0% cancellation probability, reducing overall cancellation rate from 18.0% down to 2.0%.
+              GatiSetu's Machine Learning Risk Engine evaluates driver turnaround times (VTAT), distance, and vehicle class from 150,000 historical records. High-value farmer produce is assigned to drivers with &lt;4.0% cancellation dropout probability.
             </p>
-            <div class="p-3 bg-invention-orange/10 border border-invention-orange/30 rounded-xs text-[11px] font-bold text-invention-orange">
-              ✓ 98.0% Guaranteed Pickup Fulfillment
+            <div class="p-3 bg-invention-orange/10 border border-invention-orange/30 rounded-xs text-xs font-bold text-invention-orange">
+              ✓ Reduced cancellation dropout from 18.0% baseline down to 2.0% (98.0% Guaranteed Pickup)
             </div>
           </div>
 
-          <div class="p-5 bg-surface border border-border space-y-3">
+          <div class="p-6 bg-surface border border-border space-y-4 rounded-xs">
             <div class="flex items-center gap-2 text-invention-orange font-bold text-sm uppercase">
-              🚛 One-Stop Setu Point Pickup
+              🚛 One-Stop Virtual Setu Point Pickup
             </div>
             <p class="text-xs text-gray-300 leading-relaxed font-sans">
-              Drivers pick up a guaranteed 100% full capacity load at a single local Setu Hub (e.g. Panchayat Bhawan) instead of driving to 5 scattered farms.
+              Instead of wasting fuel driving to 5 scattered farms, drivers pick up a guaranteed 100% full-capacity load at a single local Setu Point (e.g. Rampur Panchayat Bhawan or Temple Chowk).
             </p>
-            <div class="p-3 bg-mint-green/10 border border-mint-green/30 rounded-xs text-[11px] font-bold text-mint-green">
-              ✓ 100% Guaranteed Full Load Capacity
+            <div class="p-3 bg-mint-green/10 border border-mint-green/30 rounded-xs text-xs font-bold text-mint-green">
+              ✓ 100% Guaranteed Full Load Capacity Utilization
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 3: Return Backhaul Monetization -->
-    <section id="content-backhaul" class="space-y-6 hidden">
-      <div class="card-industrial p-6 sm:p-8 bg-gradient-to-r from-blue-600/15 via-surface-elevated to-surface-elevated border-l-4 border-l-blue-500 space-y-6">
+    <!-- SECTION 3: Return Backhaul Monetization -->
+    <section id="content-backhaul" class="space-y-6">
+      <div class="card-industrial p-6 sm:p-8 bg-gradient-to-r from-blue-600/15 via-surface-elevated to-surface-elevated border-l-4 border-l-blue-500 glow-blue space-y-6">
         <div>
-          <h2 class="text-xl font-black uppercase text-blue-400">
+          <div class="text-[10px] font-black text-blue-400 uppercase tracking-wider font-outfit">Module 03</div>
+          <h2 class="text-xl sm:text-2xl font-black uppercase text-blue-400">
             Dead-Mile Reduction & Subsidized Return Freight
           </h2>
-          <p class="text-xs text-gray-400 mt-1 font-sans">
-            Over 60% of trucks return empty from urban mandis. GatiSetu turns every return mile into revenue.
+          <p class="text-xs text-gray-300 mt-1 font-sans">
+            Over 60% of trucks return empty from urban mandis. GatiSetu turns every return mile into a revenue mile.
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="p-5 bg-surface border border-border space-y-3">
+          <div class="p-6 bg-surface border border-border space-y-3 rounded-xs">
             <h3 class="text-sm font-bold uppercase text-white">
               🚚 For Sarathi Drivers: +59% Income Growth
             </h3>
             <p class="text-xs text-gray-300 leading-relaxed font-sans">
-              Return trips carry subsidized seeds, fertilizers, and tools back to villages, raising monthly driver income from ₹15,000 to ₹23,800.
+              Return trips carry subsidized seeds, fertilizers, and farming equipment back to villages. Sarathis earn freight income on both legs of the journey, boosting monthly income from ₹15,000 to ₹23,800.
             </p>
+            <div class="p-3 bg-invention-orange/10 border border-invention-orange/30 text-invention-orange font-bold text-xs rounded-xs">
+              +59% Driver Monthly Earnings (₹23.8K vs ₹15K)
+            </div>
           </div>
 
-          <div class="p-5 bg-surface border border-border space-y-3">
+          <div class="p-6 bg-surface border border-border space-y-3 rounded-xs">
             <h3 class="text-sm font-bold uppercase text-white">
-              🌾 For Kisans: 60% Subsidized Input Rates
+              🌾 For Kisans: 60% Subsidized Input Freight
             </h3>
             <p class="text-xs text-gray-300 leading-relaxed font-sans">
-              Farmers get seeds and fertilizers delivered back to their village at a 60% freight discount because the truck is returning anyway!
+              Farmers receive essential seeds and fertilizers delivered directly to their village at a 60% freight discount because the returning truck is traveling back anyway!
             </p>
+            <div class="p-3 bg-mint-green/10 border border-mint-green/30 text-mint-green font-bold text-xs rounded-xs">
+              -60% Freight Discount on Seeds & Fertilizer (₹400 vs ₹1000)
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 4: FAQ Accordions -->
-    <section id="content-faq" class="space-y-4 hidden">
-      <div class="card-industrial bg-surface border border-border p-5">
-        <h3 class="font-bold text-sm text-white mb-2">Q: क्या मुझे ऐप का उपयोग करने के लिए पढ़ना या लिखना आना चाहिए? (Do I need literacy?)</h3>
-        <p class="text-xs text-gray-300 font-sans">
-          बिल्कुल नहीं! GatiSetu वॉइस-फर्स्ट डिज़ाइन किया गया है। आप बस हरे रंग के माइक बटन को दबाकर हिंदी में बोल सकते हैं और ऑटोमैटिक ऑडियो सुन सकते हैं।
-        </p>
-      </div>
+    <!-- SECTION 4: Performance Comparison Table -->
+    <section id="content-comparison" class="space-y-6">
+      <div class="card-industrial p-6 sm:p-8 bg-surface-elevated border border-border space-y-6">
+        <div>
+          <div class="text-[10px] font-black text-mint-green uppercase tracking-wider font-outfit">Module 04</div>
+          <h2 class="text-xl sm:text-2xl font-black uppercase text-white">
+            Performance Impact Audit (Traditional vs GatiSetu)
+          </h2>
+        </div>
 
-      <div class="card-industrial bg-surface border border-border p-5">
-        <h3 class="font-bold text-sm text-white mb-2">Q: किसान को फसल कहाँ छोड़नी होती है? (Where are crops dropped?)</h3>
-        <p class="text-xs text-gray-300 font-sans">
-          फसलें आपके गाँव के पास 10 किमी के भीतर बने 'सेतु पॉइंट' (जैसे पंचायत भवन या मंदिर चौक) पर एकत्र होती हैं।
-        </p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs font-sans border-collapse">
+            <thead>
+              <tr class="border-b border-border bg-surface text-gray-400 font-bold uppercase text-[11px]">
+                <th class="p-3 font-outfit">Metric Category</th>
+                <th class="p-3 font-outfit">Traditional Middlemen</th>
+                <th class="p-3 font-outfit">GatiSetu AI Ecosystem</th>
+                <th class="p-3 font-outfit text-mint-green">Impact Delta</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border/60">
+              <tr>
+                <td class="p-3 font-bold text-white">Farmer Transport Fare</td>
+                <td class="p-3 text-red-400">₹100 / km</td>
+                <td class="p-3 text-mint-green font-bold">₹42 / km</td>
+                <td class="p-3 text-mint-green font-black font-outfit">-58% Cost Reduction</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-white">Driver Monthly Income</td>
+                <td class="p-3 text-red-400">₹15,000 / month</td>
+                <td class="p-3 text-invention-orange font-bold">₹23,800 / month</td>
+                <td class="p-3 text-invention-orange font-black font-outfit">+59% Income Growth</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-white">Driver Cancellation Risk</td>
+                <td class="p-3 text-red-400">18.0% Dropout Rate</td>
+                <td class="p-3 text-mint-green font-bold">2.0% Dropout Rate</td>
+                <td class="p-3 text-mint-green font-black font-outfit">-89% Cancellation Drop</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-white">Setu Pickup Fulfillment</td>
+                <td class="p-3 text-red-400">Uncertain / Delays</td>
+                <td class="p-3 text-mint-green font-bold">98.0% Guaranteed Pickup</td>
+                <td class="p-3 text-mint-green font-black font-outfit">98.0% Reliability</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-white">Empty Return Runs (Dead Miles)</td>
+                <td class="p-3 text-red-400">60% of Trips Empty</td>
+                <td class="p-3 text-blue-400 font-bold">0% Empty (Backhaul Monetized)</td>
+                <td class="p-3 text-blue-400 font-black font-outfit">100% Miles Monetized</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+    </section>
 
-      <div class="card-industrial bg-surface border border-border p-5">
-        <h3 class="font-bold text-sm text-white mb-2">Q: ड्राइवर असाइनमेंट कैसे सुरक्षित होता है? (How is driver assignment secured?)</h3>
-        <p class="text-xs text-gray-300 font-sans">
-          हमारा 150,000 डेटासेट मशीन लर्निंग मॉडल केवल Tier-1 सत्यापित ड्राइवरों को ही लोड देता है, जिससे 98% डिलीवरी गारंटी मिलती है।
-        </p>
+    <!-- SECTION 5: FAQ & Accessibility -->
+    <section id="content-faq" class="space-y-4">
+      <div class="card-industrial bg-surface-elevated border border-border p-6 space-y-4">
+        <h2 class="text-xl font-black uppercase text-white font-outfit flex items-center gap-2">
+          ❓ Frequently Asked Questions & Illiteracy Accessibility
+        </h2>
+
+        <div class="space-y-4 font-sans">
+          <div class="p-4 bg-surface border border-border rounded-xs space-y-1">
+            <h3 class="font-bold text-sm text-mint-green">Q: क्या मुझे ऐप का उपयोग करने के लिए पढ़ना या लिखना आना चाहिए? (Do I need literacy?)</h3>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              बिल्कुल नहीं! GatiSetu वॉइस-फर्स्ट डिज़ाइन किया गया है। आप बस हरे रंग के माइक बटन को दबाकर हिंदी में बोल सकते हैं और ऑटोमैटिक ऑडियो सुन सकते हैं।
+            </p>
+          </div>
+
+          <div class="p-4 bg-surface border border-border rounded-xs space-y-1">
+            <h3 class="font-bold text-sm text-invention-orange">Q: किसान को फसल कहाँ छोड़नी होती है? (Where are crops dropped off?)</h3>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              फसलें आपके गाँव के पास 10 किमी के भीतर बने 'सेतु पॉइंट' (जैसे पंचायत भवन या मंदिर चौक) पर एकत्र होती हैं।
+            </p>
+          </div>
+
+          <div class="p-4 bg-surface border border-border rounded-xs space-y-1">
+            <h3 class="font-bold text-sm text-blue-400">Q: ड्राइवर असाइनमेंट कैसे सुरक्षित होता है? (How is driver assignment secured?)</h3>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              हमारा 150,000 डेटासेट मशीन लर्निंग मॉडल केवल Tier-1 सत्यापित ड्राइवरों को ही लोड देता है, जिससे 98% डिलीवरी गारंटी मिलती है।
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
   </main>
 
   <!-- Footer -->
-  <footer class="max-w-6xl mx-auto border-t border-border mt-12 pt-6 text-center text-xs text-gray-500 font-outfit uppercase tracking-wider">
-    © 2026 GatiSetu · Standalone Illiteracy-Accessible User Guide
+  <footer class="max-w-6xl mx-auto border-t border-border/80 mt-12 pt-6 text-center text-xs text-gray-500 font-outfit uppercase tracking-wider">
+    © 2026 GatiSetu · Standalone Illiteracy-Accessible User Guide & Manual
   </footer>
 
   <!-- Script for Tab Switching & Speech Synthesis -->
   <script>
     function switchTab(tabName) {
-      const tabs = ['kisan', 'sarathi', 'backhaul', 'faq'];
+      const tabs = ['kisan', 'sarathi', 'backhaul', 'comparison', 'faq'];
       tabs.forEach(t => {
         const btn = document.getElementById('tab-' + t);
         const content = document.getElementById('content-' + t);
         if (t === tabName) {
-          btn.className = "px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xs transition-all bg-mint-green text-surface shadow-lg";
+          btn.className = "px-5 py-3 text-xs font-bold uppercase tracking-wider rounded-xs transition-all bg-mint-green text-surface shadow-lg";
           content.classList.remove('hidden');
         } else {
-          btn.className = "px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xs transition-all text-gray-400 hover:text-white";
+          btn.className = "px-5 py-3 text-xs font-bold uppercase tracking-wider rounded-xs transition-all text-gray-400 hover:text-white";
           content.classList.add('hidden');
         }
+      });
+    }
+
+    function showAllForPrint() {
+      const tabs = ['kisan', 'sarathi', 'backhaul', 'comparison', 'faq'];
+      tabs.forEach(t => {
+        const content = document.getElementById('content-' + t);
+        if (content) content.classList.remove('hidden');
       });
     }
 
